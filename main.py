@@ -30,9 +30,13 @@ while game_is_on:
     if ball.ycor() > 280 or ball.ycor() < -280:
         ball.bounce_y()
 
-    if ball.distance(r_paddle) < 50 and ball.xcor() > 320 or ball.distance(l_paddle) < 50 and ball.xcor() < -320:
+    if ball.distance(r_paddle) < 50 and 320 < ball.xcor() < 350:
         ball.bounce_x()
+        ball.goto(320, ball.ycor())  # Move ball just outside the paddle
 
+    if ball.distance(l_paddle) < 50 and -350 < ball.xcor() < -320:
+        ball.bounce_x()
+        ball.goto(-320, ball.ycor())  # Move ball just outside the paddle
 
     #Detect right paddle miss
     if ball.xcor() > 420:
